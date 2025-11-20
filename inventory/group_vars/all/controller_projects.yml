@@ -1,0 +1,27 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_projects/
+
+controller_projects:
+  - name: simple-demo
+    scm_type: git
+    scm_url: https://github.com/vvaldez/ansible-simple-demo.git
+    scm_branch: main
+    scm_clean: true
+    description: Simple demo
+    organization: Lab
+    credential: Github
+    update_project: true
+    allow_override: true
+
+  - name: aap-as-code
+    scm_type: git
+    scm_url: https://github.com/vvaldez/aap-as-code.git
+    scm_branch: "{{ git_branch | default('main') }}"
+    scm_clean: true
+    description: Config as Code for Lab
+    organization: Lab
+    credential: Github
+    update_project: true
+    allow_override: true
+
+...

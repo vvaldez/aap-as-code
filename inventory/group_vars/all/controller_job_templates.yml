@@ -1,0 +1,33 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_job_templates/
+
+controller_templates:
+  - name: Lab simple demo
+    project: simple-demo
+    job_type: run
+    playbook: demo.yml
+    inventory: localhost
+    execution_environment: "Default execution environment"
+    verbosity: 0
+    ask_variables_on_launch: true
+    extra_vars:
+      my_variable: 'default'
+
+  - name: Config as Code
+    project: aap-as-code
+    job_type: run
+    playbook: configure_aap.yml
+    inventory: "aap-{{ aap_env }}"
+    execution_environment: "Default execution environment"
+    credentials:
+      - "aap-{{ aap_env }}"
+      - "Ansible Vault All"
+      - "Ansible Vault {{ aap_env }}"
+    verbosity: 0
+    ask_scm_branch_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      git_branch: 'main'
+      aap_env: "{{ aap_env }}"
+
+...

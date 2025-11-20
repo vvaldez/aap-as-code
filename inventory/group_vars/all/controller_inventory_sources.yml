@@ -1,0 +1,16 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_inventory_sources/
+
+controller_inventory_sources:
+  - name: "aap-{{ aap_env }} inventory source from project"
+    source: scm
+    source_project: aap-as-code
+    source_path: "inventory/{{ aap_env }}.yml"
+    inventory: "aap-{{ aap_env }}"
+    description: Inventory sourced from a Project
+    overwrite: true
+    overwrite_vars: true
+    update_on_launch: true
+    scm_branch: "{{ git_branch | default('main') }}"
+
+...

@@ -1,0 +1,26 @@
+---
+- name: Install AAP on OCP
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - inventory/vaults/all.yml
+    - inventory/vaults/{{ aap_env | default('test') }}.yml
+  tasks:
+    - name: Debug
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 2
+
+    # This task has been added upstream to the role in https://github.com/redhat-cop/aap_utilities/pull/302
+    - name: Validate OpenShift API token
+      ansible.builtin.uri:
+        url: "{{  aap_ocp_install_connection['host'] | default(lookup('ansible.builtin.env', 'K8S_AUTH_HOST')) }}/version"
+        method: GET
+        validate_certs: "{{ aap_ocp_install_connection['validate_certs'] | default(lookup('ansible.builtin.env', 'K8S_AUTH_VERIFY_SSL')) | bool }}"
+        headers:
+          Authorization: Bearer {{ aap_ocp_install_connection['api_key'] | default(lookup('ansible.builtin.env', 'K8S_AUTH_API_KEY')) }}
+
+    - name: Include AAP OCP Install role
+      ansible.builtin.include_role:
+        name: infra.aap_utilities.aap_ocp_install
+...

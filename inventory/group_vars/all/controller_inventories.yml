@@ -1,0 +1,9 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_inventories/
+
+controller_inventories:
+  - name: localhost
+    organization: Lab
+  - name: "aap-{{ aap_env }}"
+    organization: Lab
+...

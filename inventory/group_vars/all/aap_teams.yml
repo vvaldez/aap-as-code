@@ -1,0 +1,12 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_teams/
+
+aap_teams:
+  - name: Lab Members
+    description: Regular members of the Lab organization with access to view and execute resources
+    organization: Lab
+  
+  - name: Lab Administrators
+    description: Administrators with full access to manage resources in the Lab organization
+    organization: Lab
+...

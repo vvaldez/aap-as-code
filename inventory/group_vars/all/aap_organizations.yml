@@ -1,0 +1,10 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/gateway_organizations/
+
+aap_organizations:
+  - name: Lab
+    galaxy_credentials:
+      - Red Hat Automation Hub Certified
+      - Red Hat Automation Hub Validated
+      - "Ansible Galaxy"
+...

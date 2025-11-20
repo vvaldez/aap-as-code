@@ -1,0 +1,17 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_hosts/
+
+controller_hosts:
+  - name: "localhost"
+    inventory: "localhost"
+    description: "localhost"
+    variables:
+      ansible_connection: local
+      ansible_python_interpreter: !unsafe '{{ ansible_playbook_python}}'
+    enabled: true
+
+  - name: "{{ aap_hostname }}"
+    inventory: "aap-{{ aap_env }}"
+    description: "AAP for {{ aap_env }} environment"
+    enabled: true
+...

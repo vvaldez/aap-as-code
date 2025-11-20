@@ -1,0 +1,18 @@
+---
+- name: Playbook to configure ansible controller and gateway post installation
+  hosts: "{{ aap_env | default('test') }}"
+  connection: local
+  vars_files:
+    - inventory/vaults/all.yml
+    - inventory/vaults/{{ aap_env | default('test') }}.yml
+  tasks:
+    - name: Debug vars
+      ansible.builtin.debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 2
+
+    - name: Call dispatch role
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.dispatch
+
+...

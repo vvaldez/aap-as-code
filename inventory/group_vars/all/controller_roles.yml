@@ -1,0 +1,48 @@
+---
+# https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_roles/
+
+_lab_projects: &lab_projects
+  - simple-demo
+  - aap-as-code
+
+_lab_inventories: &lab_inventories
+  - localhost
+  - "aap-{{ aap_env }}"
+
+_lab_job_templates: &lab_job_templates
+  - Lab simple demo
+  - Config as Code
+
+_lab_credentials: &lab_credentials
+  - Github
+  - Ansible Vault All
+  - "Ansible Vault {{ aap_env }}"
+  - "aap-{{ aap_env }}"
+  - Red Hat Automation Hub Certified
+  - Red Hat Automation Hub Validated
+
+_lab_execution_environments: &lab_execution_environments
+  - Default execution environment
+
+# NOTE: Lab Administrators team is NOT listed below because they receive
+#       "Organization Admin" role via gateway_authenticator_maps.yml which
+#       automatically grants full admin access to ALL resources in the org.
+controller_roles:
+  # Project permissions - allow members to use and update projects
+  - {team: Lab Members, projects: *lab_projects, role: use}
+  - {team: Lab Members, projects: *lab_projects, role: update}
+
+  # Inventory permissions - allow members to use inventories
+  - {team: Lab Members, inventories: *lab_inventories, role: use}
+
+  # Job Template permissions - allow members to execute and read job templates
+  - {team: Lab Members, job_templates: *lab_job_templates, role: execute}
+  - {team: Lab Members, job_templates: *lab_job_templates, role: read}
+
+  # Credential permissions - allow members to use credentials (not view secrets)
+  - {team: Lab Members, credentials: *lab_credentials, role: use}
+
+  # Execution Environment permissions - allow members to use EEs
+  - {team: Lab Members, execution_environments: *lab_execution_environments, role: use}
+
+...
