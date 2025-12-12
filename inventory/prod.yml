@@ -3,7 +3,7 @@ all:
   children:
     prod:
       hosts:
-        prod-aap-vvaldez-aap-prod.apps.cluster-29pl9.dynamic.redhatworkshops.io:
+        prod-aap-vvaldez-aap-prod.apps.example.com:
   vars:
     aap_env: 'prod'
     # install vars
@@ -24,6 +24,6 @@ all:
     aap_ocp_install_lightspeed:
       install: true
     # post-install configuration vars
-    aap_hostname: prod-aap-vvaldez-aap-prod.apps.cluster-29pl9.dynamic.redhatworkshops.io
+    aap_hostname: prod-aap-vvaldez-aap-prod.apps.example.com
 
 ...

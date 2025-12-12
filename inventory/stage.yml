@@ -3,7 +3,7 @@ all:
   children:
     stage:
       hosts:
-        stage-aap-vvaldez-aap-stage.apps.cluster-29pl9.dynamic.redhatworkshops.io:
+        stage-aap-vvaldez-aap-stage.apps.example.com:
   vars:
     aap_env: 'stage'
     # install vars
@@ -24,6 +24,6 @@ all:
     aap_ocp_install_lightspeed:
       install: true
     # post-install configuration vars
-    aap_hostname: stage-aap-vvaldez-aap-stage.apps.cluster-29pl9.dynamic.redhatworkshops.io
+    aap_hostname: stage-aap-vvaldez-aap-stage.apps.example.com
 
 ...
