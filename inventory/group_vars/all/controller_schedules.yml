@@ -1,5 +1,6 @@
 ---
 # https://console.redhat.com/ansible/automation-hub/repo/validated/infra/aap_configuration/content/role/controller_schedules
+
 controller_schedules:
   - name: Config as Code from main
     description: Config as Code applied from main branch
